@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 private const val BASE_URL = "https://api.github.com/"
 
-class ApiManager {
+object ApiManager {
 
     fun getApiClient(): GitHubService {
 

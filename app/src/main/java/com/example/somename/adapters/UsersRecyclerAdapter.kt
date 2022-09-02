@@ -50,7 +50,7 @@ class UsersRecyclerAdapter(
             .into(holder.avatar)
 
         holder.itemView.setOnClickListener {
-            mOnRvItemClickListener.onItemClicked(holder.absoluteAdapterPosition) // change if something happens
+            mOnRvItemClickListener.onItemClicked(holder.bindingAdapterPosition) // change if something happens
         }
     }
 

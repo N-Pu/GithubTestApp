@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity(), UsersRecyclerAdapter.OnRvItemClickList
     private lateinit var mUsers: ArrayList<ListUser>
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,7 +39,7 @@ class MainActivity : AppCompatActivity(), UsersRecyclerAdapter.OnRvItemClickList
         val recyclerView = findViewById<RecyclerView>(R.id.rv_github_users)
         val layoutManager = LinearLayoutManager(this)
         val scrollListener = object : CustomScrollListener(layoutManager) {
-            override  fun onLoadMore(page: Int, totalItemCount: Int, view: RecyclerView) {
+            override fun onLoadMore(page: Int, totalItemCount: Int, view: RecyclerView) {
                 loadDataFromApi(totalItemCount)
             }
         }
@@ -60,7 +59,7 @@ class MainActivity : AppCompatActivity(), UsersRecyclerAdapter.OnRvItemClickList
                     call: Call<List<ListUser>>,
                     response: Response<List<ListUser>>
                 ) {
-                    Log.v("TAG", "Success")
+                    Log.v("TAG", "MainActivity -> Success")
                     val users: List<ListUser>? = response.body()
                     if (users != null) {
                         mUsers.addAll(users)
@@ -69,7 +68,7 @@ class MainActivity : AppCompatActivity(), UsersRecyclerAdapter.OnRvItemClickList
                 }
 
                 override fun onFailure(call: Call<List<ListUser>>, t: Throwable) {
-                    Log.v("TAG", "Failure : $t")
+                    Log.v("TAG", "MainActivity -> Failure : $t")
                 }
 
             })

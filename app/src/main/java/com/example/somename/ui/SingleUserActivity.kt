@@ -2,10 +2,12 @@ package com.example.somename.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.JsonReader
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
 import com.example.somename.R
 import com.example.somename.data.ApiManager
@@ -37,8 +39,21 @@ class SingleUserActivity : AppCompatActivity() {
         mFollowersTxt = findViewById(R.id.tv_followers)
     }
 
+    @SuppressLint("SetTextI18n")
+    fun fillData(user: SingleUser) {
 
-    @OptIn(DelicateCoroutinesApi::class)
+        Glide.with(this)
+            .load(user.get_AvatarUrl())
+            .into(mAvatarIv)
+
+        mTypeTxt.text = "Type : " + user.get_Type()
+        mNameTxt.text = "Name : " + user.get_Name()
+        mLocationTxt.text = "Location : " + user.get_Location()
+        mReposTxt.text = "Repos : " + java.lang.String.valueOf(user.get_PublicRepos())
+        mFollowersTxt.text = "Followers : " + java.lang.String.valueOf(user.get_Followers())
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_single_user)
@@ -54,14 +69,38 @@ class SingleUserActivity : AppCompatActivity() {
 
     }
 
+//    private fun loadData(userName: String) {
+//
+//        if (NetworkUtils.isNetworkAvailable(this)) {
+////            val call = ApiManager.getApiClient().getSingleUser(userName)
+//            val call: Call<SingleUser> = ApiManager.getApiClient().getSingleUser(userName)
+//            call.enqueue(object : Callback<SingleUser> {
+//                override fun onResponse(call: Call<SingleUser>, response: Response<SingleUser>) {
+//                    Log.v("TAG", "Success")
+//                    val user: SingleUser? = response.body()
+//                    if (user != null) {
+//                        fillData(user)
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<SingleUser>, t: Throwable) {
+//                    Log.v("TAG", "Failure : $t")
+//                }
+//
+//            })
+//        } else Log.v("TAG", "No network connection")
+//    }
+
+
     private fun loadData(userName: String) {
 
         if (NetworkUtils.isNetworkAvailable(this)) {
 //            val call = ApiManager.getApiClient().getSingleUser(userName)
             val call: Call<SingleUser> = ApiManager.getApiClient().getSingleUser(userName)
+
             call.enqueue(object : Callback<SingleUser> {
                 override fun onResponse(call: Call<SingleUser>, response: Response<SingleUser>) {
-                    Log.v("TAG", "Success")
+                    Log.v("TAG", "SingleUserActivity -> Success")
                     val user: SingleUser? = response.body()
                     if (user != null) {
                         fillData(user)
@@ -69,25 +108,16 @@ class SingleUserActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<SingleUser>, t: Throwable) {
-                    Log.v("TAG", "Failure : $t")
+                    Log.v("TAG", "SingleUserActivity -> Failure : $t")
                 }
 
             })
+
+
         } else Log.v("TAG", "No network connection")
     }
 
-
-    fun fillData(user: SingleUser) {
-
-        Glide.with(this)
-            .load(user.get_AvatarUrl())
-            .into(mAvatarIv)
-
-        mTypeTxt.text = "Type : " + user.get_Type()
-        mNameTxt.text = "Name : " + user.get_Name()
-        mLocationTxt.text = "Location : " + user.get_Location()
-        mReposTxt.text = "Repos : " + java.lang.String.valueOf(user.get_PublicRepos())
-        mFollowersTxt.text = "Followers : " + java.lang.String.valueOf(user.get_Followers())
-    }
-
 }
+
+
+

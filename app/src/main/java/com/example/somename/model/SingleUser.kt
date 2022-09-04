@@ -3,31 +3,38 @@ package com.example.somename.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class SingleUser {
+data class SingleUser(
+    @SerializedName("avatar_url") private var avatarUrl: String,
+    @SerializedName("type") private var type: String,
+    @SerializedName("name") private var name: String,
+    @SerializedName("location") private var location: String,
+    @SerializedName("public_repos") private var publicRepos: Int,
+    @SerializedName("followers") private var followers: Int
+) {
 
-    @SerializedName("avatar_url")
-    @Expose
-    var avatarUrl = String()
-
-    @SerializedName("type")
-    @Expose
-    var type = String()
-
-    @SerializedName("name")
-    @Expose
-    var name = String()
-
-    @SerializedName("location")
-    @Expose
-    var location = String()
-
-    @SerializedName("public_repos")
-    @Expose
-    var publicRepos = Int
-
-    @SerializedName("followers")
-    @Expose
-    var followers = Int
+//    @SerializedName("avatar_url")
+//    @Expose
+////    var avatarUrl = String()
+//
+//    @SerializedName("type")
+//    @Expose
+//    var type = String()
+//
+//    @SerializedName("name")
+//    @Expose
+//    var name = String()
+//
+//    @SerializedName("location")
+//    @Expose
+//    var location = String()
+//
+//    @SerializedName("public_repos")
+//    @Expose
+//    var publicRepos = Int
+//
+//    @SerializedName("followers")
+//    @Expose
+//    var followers = Int
 
 
     fun get_AvatarUrl(): String {
@@ -64,19 +71,19 @@ class SingleUser {
         this.location = location
     }
 
-    fun get_PublicRepos(): Int.Companion {
+    fun get_PublicRepos(): Int {
         return publicRepos
     }
 
-    fun set_PublicRepos(publicRepos: Int.Companion) {
+    fun set_PublicRepos(publicRepos: Int) {
         this.publicRepos = publicRepos
     }
 
-    fun get_Followers(): Int.Companion {
+    fun get_Followers(): Int {
         return followers
     }
 
-    fun set_Followers(followers: Int.Companion) {
+    fun set_Followers(followers: Int) {
         this.followers = followers
     }
 }

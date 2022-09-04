@@ -10,12 +10,12 @@ import retrofit2.http.Query
 interface GitHubService {
 
     @GET("users")
-     fun getUsers(
+    fun getUsers(
         @Query("since") offset: Int,
         @Query("per_page") limit: Int
     ): Call<List<ListUser>>
 
 
     @GET("users/{userName}")
-     fun getSingleUser(@Path("userName") name: String): Call<SingleUser>
+    fun getSingleUser(@Path("userName") name: String): Call<SingleUser>
 }

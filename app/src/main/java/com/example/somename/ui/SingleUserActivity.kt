@@ -2,20 +2,15 @@ package com.example.somename.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.JsonReader
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
 import com.example.somename.R
 import com.example.somename.data.ApiManager
 import com.example.somename.model.SingleUser
 import com.example.somename.utils.NetworkUtils
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -69,33 +64,10 @@ class SingleUserActivity : AppCompatActivity() {
 
     }
 
-//    private fun loadData(userName: String) {
-//
-//        if (NetworkUtils.isNetworkAvailable(this)) {
-////            val call = ApiManager.getApiClient().getSingleUser(userName)
-//            val call: Call<SingleUser> = ApiManager.getApiClient().getSingleUser(userName)
-//            call.enqueue(object : Callback<SingleUser> {
-//                override fun onResponse(call: Call<SingleUser>, response: Response<SingleUser>) {
-//                    Log.v("TAG", "Success")
-//                    val user: SingleUser? = response.body()
-//                    if (user != null) {
-//                        fillData(user)
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<SingleUser>, t: Throwable) {
-//                    Log.v("TAG", "Failure : $t")
-//                }
-//
-//            })
-//        } else Log.v("TAG", "No network connection")
-//    }
-
 
     private fun loadData(userName: String) {
 
         if (NetworkUtils.isNetworkAvailable(this)) {
-//            val call = ApiManager.getApiClient().getSingleUser(userName)
             val call: Call<SingleUser> = ApiManager.getApiClient().getSingleUser(userName)
 
             call.enqueue(object : Callback<SingleUser> {

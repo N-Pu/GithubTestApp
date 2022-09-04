@@ -13,9 +13,6 @@ import com.example.somename.adapters.UsersRecyclerAdapter
 import com.example.somename.data.ApiManager
 import com.example.somename.model.ListUser
 import com.example.somename.utils.NetworkUtils
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

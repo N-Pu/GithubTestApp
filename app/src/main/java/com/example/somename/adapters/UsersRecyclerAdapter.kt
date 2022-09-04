@@ -19,11 +19,6 @@ class UsersRecyclerAdapter(
     RecyclerView.Adapter<UsersRecyclerAdapter.UserViewHolder>() {
 
 
-//    constructor() : this() {
-//        this.mData = mData
-//        this.mOnRvItemClickListener = mOnRvItemClickListener
-//    }
-
 
     interface OnRvItemClickListener {
         fun onItemClicked(pos: Int)

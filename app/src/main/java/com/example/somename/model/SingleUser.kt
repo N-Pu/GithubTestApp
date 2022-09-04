@@ -1,6 +1,6 @@
 package com.example.somename.model
 
-import com.google.gson.annotations.Expose
+
 import com.google.gson.annotations.SerializedName
 
 data class SingleUser(
@@ -11,30 +11,6 @@ data class SingleUser(
     @SerializedName("public_repos") private var publicRepos: Int,
     @SerializedName("followers") private var followers: Int
 ) {
-
-//    @SerializedName("avatar_url")
-//    @Expose
-////    var avatarUrl = String()
-//
-//    @SerializedName("type")
-//    @Expose
-//    var type = String()
-//
-//    @SerializedName("name")
-//    @Expose
-//    var name = String()
-//
-//    @SerializedName("location")
-//    @Expose
-//    var location = String()
-//
-//    @SerializedName("public_repos")
-//    @Expose
-//    var publicRepos = Int
-//
-//    @SerializedName("followers")
-//    @Expose
-//    var followers = Int
 
 
     fun get_AvatarUrl(): String {

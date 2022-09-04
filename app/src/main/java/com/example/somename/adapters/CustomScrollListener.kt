@@ -44,6 +44,6 @@ abstract class CustomScrollListener() :
         }
     }
 
-    abstract  fun onLoadMore(page: Int, totalItemCount: Int, view: RecyclerView)
+    abstract fun onLoadMore(page: Int, totalItemCount: Int, view: RecyclerView)
 
 }

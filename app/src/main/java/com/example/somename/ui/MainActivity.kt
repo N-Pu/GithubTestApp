@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.somename.R
@@ -26,9 +27,13 @@ class MainActivity : AppCompatActivity(), UsersRecyclerAdapter.OnRvItemClickList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        window.statusBarColor = ContextCompat.getColor(this, R.color.dark_git)
+
         mUsers = ArrayList()
         initRecyclerView()
         loadDataFromApi(0)
+
     }
 
 

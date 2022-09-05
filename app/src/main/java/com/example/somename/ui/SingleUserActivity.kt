@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.somename.R
 import com.example.somename.data.ApiManager
@@ -53,7 +54,7 @@ class SingleUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_single_user)
 
-
+        window.statusBarColor = ContextCompat.getColor(this, R.color.dark_git)
         val userName: String? = intent.getStringExtra(KEY_USER_NAME)
 
         initView()

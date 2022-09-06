@@ -19,10 +19,10 @@ class UsersRecyclerAdapter(
     RecyclerView.Adapter<UsersRecyclerAdapter.UserViewHolder>() {
 
 
-
     interface OnRvItemClickListener {
         fun onItemClicked(pos: Int)
     }
+
 
 
     class UserViewHolder(userView: View) : RecyclerView.ViewHolder(userView) {
@@ -45,12 +45,12 @@ class UsersRecyclerAdapter(
             .into(holder.avatar)
 
         holder.itemView.setOnClickListener {
-            mOnRvItemClickListener.onItemClicked(holder.bindingAdapterPosition) // change if something happens
+            mOnRvItemClickListener.onItemClicked(holder.bindingAdapterPosition)
         }
     }
 
     override fun getItemCount(): Int {
-        return if (mData == null) 0 else mData.size // have to fix this too
+        return mData.size
     }
 
 

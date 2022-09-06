@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -52,15 +53,21 @@ class MainActivity : AppCompatActivity(), UsersRecyclerAdapter.OnRvItemClickList
 
     }
 
-    private fun loadDataFromApi(page: Int) {
+    private fun loadDataFromApi(page: Int)  {
         if (NetworkUtils.isNetworkAvailable(this)) {
+
+
+
             val call: Call<List<ListUser>> = ApiManager.getApiClient().getUsers(page, LIMIT)
+
+
             call.enqueue(object : Callback<List<ListUser>> {
                 @SuppressLint("NotifyDataSetChanged")
                 override fun onResponse(
                     call: Call<List<ListUser>>,
                     response: Response<List<ListUser>>
                 ) {
+
                     Log.v("TAG", "MainActivity -> Success")
                     val users: List<ListUser>? = response.body()
                     if (users != null) {
@@ -70,13 +77,21 @@ class MainActivity : AppCompatActivity(), UsersRecyclerAdapter.OnRvItemClickList
                 }
 
                 override fun onFailure(call: Call<List<ListUser>>, t: Throwable) {
+                    toastFail()
                     Log.v("TAG", "MainActivity -> Failure : $t")
+
                 }
 
             })
 
         } else
             Log.v("TAG", "No network connection")
+    }
+
+
+
+    private fun toastFail() {
+        Toast.makeText(this@MainActivity, "Connection Error", Toast.LENGTH_SHORT).show()
     }
 
     override fun onItemClicked(pos: Int) {

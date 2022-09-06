@@ -26,10 +26,10 @@ abstract class CustomScrollListener() :
 
     @OptIn(DelicateCoroutinesApi::class)
     override fun onScrolled(@NonNull view: RecyclerView, dx: Int, dy: Int) {
-        var lastVisibleItemPosition = 0
+
         val totalItemCount = mLayoutManager.itemCount
 
-        lastVisibleItemPosition = mLayoutManager.findLastVisibleItemPosition()
+       val lastVisibleItemPosition = mLayoutManager.findLastVisibleItemPosition()
 
 
         if (loading && (totalItemCount > previousTotalItemCount)) {
@@ -39,7 +39,9 @@ abstract class CustomScrollListener() :
 
         if (!loading && (lastVisibleItemPosition + VISIBLE_TRESHOLD) > totalItemCount) {
             currentPage++
-            GlobalScope.launch { onLoadMore(currentPage, totalItemCount, view) }
+            GlobalScope.launch {
+                onLoadMore(currentPage, totalItemCount, view)
+            }
             loading = true
         }
     }

@@ -3,13 +3,13 @@ package com.example.somename.adapters
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.ReceiveChannel
+import kotlinx.coroutines.channels.produce
 
 
-abstract class CustomScrollListener() :
-    RecyclerView.OnScrollListener() {
+abstract class CustomScrollListener() : RecyclerView.OnScrollListener() {
 
 
     @SuppressWarnings("FieldCanBeLocal")
@@ -29,7 +29,7 @@ abstract class CustomScrollListener() :
 
         val totalItemCount = mLayoutManager.itemCount
 
-       val lastVisibleItemPosition = mLayoutManager.findLastVisibleItemPosition()
+        val lastVisibleItemPosition = mLayoutManager.findLastVisibleItemPosition()
 
 
         if (loading && (totalItemCount > previousTotalItemCount)) {
@@ -39,7 +39,11 @@ abstract class CustomScrollListener() :
 
         if (!loading && (lastVisibleItemPosition + VISIBLE_TRESHOLD) > totalItemCount) {
             currentPage++
-            GlobalScope.launch {
+
+
+
+
+            GlobalScope.launch(Dispatchers.Main) {
                 onLoadMore(currentPage, totalItemCount, view)
             }
             loading = true

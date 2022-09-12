@@ -9,7 +9,8 @@ data class SingleUser(
     @SerializedName("name") private var name: String,
     @SerializedName("location") private var location: String,
     @SerializedName("public_repos") private var publicRepos: Int,
-    @SerializedName("followers") private var followers: Int
+    @SerializedName("followers") private var followers: Int,
+    @SerializedName("bio") private var bio: String
 ) {
 
 
@@ -61,5 +62,15 @@ data class SingleUser(
 
     fun set_Followers(followers: Int) {
         this.followers = followers
+    }
+
+
+
+    fun get_Bio(): String {
+        return bio
+    }
+
+    fun set_Bio(bio: String) {
+        this.bio = bio
     }
 }

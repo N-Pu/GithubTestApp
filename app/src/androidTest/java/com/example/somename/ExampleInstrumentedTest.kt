@@ -1,10 +1,9 @@
 package com.example.somename
 
-import android.support.test.InstrumentationRegistry
-import android.support.test.runner.AndroidJUnit4
 
+import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Test
-import org.junit.runner.RunWith
+
 
 import org.junit.Assert.*
 
@@ -13,7 +12,7 @@ import org.junit.Assert.*
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-@RunWith(AndroidJUnit4::class)
+//@RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {

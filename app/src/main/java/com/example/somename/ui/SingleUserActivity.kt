@@ -24,6 +24,7 @@ class SingleUserActivity : AppCompatActivity() {
     private lateinit var mLocationTxt: TextView
     private lateinit var mReposTxt: TextView
     private lateinit var mFollowersTxt: TextView
+    private lateinit var mBioTxt: TextView
 
 
     private fun initView() {
@@ -33,6 +34,7 @@ class SingleUserActivity : AppCompatActivity() {
         mLocationTxt = findViewById(R.id.tv_location)
         mReposTxt = findViewById(R.id.tv_repos)
         mFollowersTxt = findViewById(R.id.tv_followers)
+        mBioTxt = findViewById(R.id.tv_bio)
     }
 
     @SuppressLint("SetTextI18n")
@@ -40,6 +42,7 @@ class SingleUserActivity : AppCompatActivity() {
 
         Glide.with(this)
             .load(user.get_AvatarUrl())
+            .circleCrop()
             .into(mAvatarIv)
 
         mTypeTxt.text = "Type : " + user.get_Type()
@@ -47,6 +50,8 @@ class SingleUserActivity : AppCompatActivity() {
         mLocationTxt.text = "Location : " + user.get_Location()
         mReposTxt.text = "Repos : " + java.lang.String.valueOf(user.get_PublicRepos())
         mFollowersTxt.text = "Followers : " + java.lang.String.valueOf(user.get_Followers())
+        mBioTxt.text = user.get_Bio()
+
     }
 
 

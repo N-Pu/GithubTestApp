@@ -50,11 +50,11 @@ class SingleUserActivity : AppCompatActivity() {
             .circleCrop()
             .into(mAvatarIv)
 
-        mTypeTxt.text = "Type : " + user.get_Type()
-        mNameTxt.text = "Name : " + user.get_Name()
-        mLocationTxt.text = "Location : " + user.get_Location()
-        mReposTxt.text = "Repos : " + java.lang.String.valueOf(user.get_PublicRepos())
-        mFollowersTxt.text = "Followers : " + java.lang.String.valueOf(user.get_Followers())
+        mTypeTxt.text = "Type : ${user.get_Type()}"
+        mNameTxt.text = "Name : ${user.get_Name()}"
+        mLocationTxt.text = "Location : ${user.get_Location()}"
+        mReposTxt.text = "Repos : ${user.get_PublicRepos()}"
+        mFollowersTxt.text = "Followers : ${user.get_Followers()}"
         mFollowingTxt.text = "Following : ${user.get_Following()}"
         mEmailTxt.text = "Email : ${user.get_Email()}"
         mBioTxt.text = user.get_Bio()

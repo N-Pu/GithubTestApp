@@ -25,6 +25,8 @@ class SingleUserActivity : AppCompatActivity() {
     private lateinit var mReposTxt: TextView
     private lateinit var mFollowersTxt: TextView
     private lateinit var mBioTxt: TextView
+    private lateinit var mEmailTxt: TextView
+    private lateinit var mFollowingTxt: TextView
 
 
     private fun initView() {
@@ -35,6 +37,9 @@ class SingleUserActivity : AppCompatActivity() {
         mReposTxt = findViewById(R.id.tv_repos)
         mFollowersTxt = findViewById(R.id.tv_followers)
         mBioTxt = findViewById(R.id.tv_bio)
+        mEmailTxt = findViewById(R.id.tv_following)
+        mFollowingTxt = findViewById(R.id.tv_email)
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -50,6 +55,8 @@ class SingleUserActivity : AppCompatActivity() {
         mLocationTxt.text = "Location : " + user.get_Location()
         mReposTxt.text = "Repos : " + java.lang.String.valueOf(user.get_PublicRepos())
         mFollowersTxt.text = "Followers : " + java.lang.String.valueOf(user.get_Followers())
+        mFollowingTxt.text = "Following : ${user.get_Following()}"
+        mEmailTxt.text = "Email : ${user.get_Email()}"
         mBioTxt.text = user.get_Bio()
 
     }

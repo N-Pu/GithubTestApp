@@ -3,7 +3,7 @@
 
 Simple and yet easy app for searching people accounts on github. 
 
-It is THE "Git Seacrh". 
+It is THE "Git Search". 
 
 The program itself is just a simple scroll layout with profile icons and names of users. 
 When you tap on them you'll get to another layout with more info for the current user. 
